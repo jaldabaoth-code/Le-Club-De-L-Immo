@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">Je me presente  {{ client.firstname }}   {{ client.lastname }}</div>
+        {% if idProperty is not null %}
+            <div class="col-12">Je suis interessé par un bien, la ref : {{ idProperty }}</div>
+        {% endif %}
+        {% if client.topic != topic[0] and client.topic != topic[1] %}
+            <div class="col-12">Je voudrais déposer un dossier pour un bien</div>
+            {% if client.address is not empty %}
+                C'est un(e) {{ client.propertyType }}, qui se situe au {{ client.address }} {{ client.city }} {{ client.postalcode}}</div>
+            {% endif %}
+        {% endif %}
+        <div class="col-12">{{ client.message }}</div>
+        <div class="col-12">Vous pouvez me contacter par mail {{ client.email }} ou par téléphone  {{ client.phone }}</div>
+    </div>
+</div>

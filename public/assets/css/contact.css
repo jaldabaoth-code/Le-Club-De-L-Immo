@@ -1,0 +1,18 @@
+.container-contact {
+    margin: 0 auto;
+    padding:100px 0;
+    color: var(--primary);
+    background-color: var(--intermediary);
+}
+
+.btn-contactForm {
+    background-color: var(--primary);
+}
+
+.text-collapse {
+    color: var(--primary);
+}
+
+.error {
+    background-color: var(--secondary);
+}

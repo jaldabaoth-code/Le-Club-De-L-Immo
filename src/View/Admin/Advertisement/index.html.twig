@@ -1,0 +1,42 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/admin_advertisement.css">
+{% endblock %}
+
+{% block content %}
+    <main class="container adminAdvertisement">
+        <h2 class="pb-2 text-center">
+            Liste des annonces
+        </h2>
+        <div class="my-5 d-flex justify-content-center justify-content-md-start">
+            <a class="btn btn-purple" href="/admin/add">Ajouter une annonce</a>
+        </div>
+        <table class="mb-5 table table-hover">
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Référence</th>
+                    <th>Surface</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for property in properties %}
+                    <tr>
+                        <td>
+                            <img class="property-photo" src="/uploads/{{ property.name }}" alt=""/>
+                        </td>
+                        <td>{{ property.reference }}</td>
+                        <td>{{ property.number }}</td>
+                        <td>
+                            <form method="POST" onSubmit="return confirm('Voulez-vous supprimer cette annonce ?')" action="/admin/delete?id={{ property.id }}">
+                                <button class="btn btn-sm btn-danger">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+{% endblock %}

@@ -1,0 +1,32 @@
+.property-photo {
+    --size: 40px;
+    width: var(--size);
+    height: var(--size);
+    object-fit: contain;
+}
+
+table td {
+    vertical-align: middle;
+}
+
+.btn-purple {
+    color: var(--light);
+    background-color: var(--primary);
+    border-color: var(--primary);
+    width:fit-content;
+}
+
+.btn-lightpurple {
+    color: var(--light);
+    background-color: var(--intermediary);
+    border-color: var(--intermediary);
+    width:fit-content;
+}
+
+.empty:empty {
+    display: none;
+}
+
+.container {
+    margin-top: var(--navbar-size);
+}

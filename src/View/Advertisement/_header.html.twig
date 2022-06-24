@@ -1,0 +1,20 @@
+<div class="container col-12 p-0">
+    <div class="row col-12">
+        <div class="col-12">
+            <a class='link-dark fw-bold back'href="/property/index">Revenir en arrière</a>
+        </div>
+         <div class="col-12 px-4 mt-5">
+            {% if property is not null %}
+                <div class="col-12">
+                    <h2 class="fw-bold">{{ property.name }}, {{ sector.name }}</h2>
+                </div>
+                <div>
+                    <h3>
+                        {{ property.transaction }} {{ property.name }}, {{ property.features['flaticon-rooms'].number }} {{ property.features['flaticon-rooms'].name }},
+                        {{ property.features['flaticon-bedrooms'].number }} {{ property.features['flaticon-bedrooms'].name }}, surface : {{ property.features['flaticon-surface'].number }} {{ property.features['flaticon-surface'].name }}
+                    </h3>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

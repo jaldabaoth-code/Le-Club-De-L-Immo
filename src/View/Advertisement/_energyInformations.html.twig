@@ -1,0 +1,51 @@
+<div class="container col-12 col-sm-12 d-flex justify-content-center my-5 px-0">
+    <div class="row col-12 col-sm-9 d-flex justify-content-center">
+        <div class="col-12 d-flex flex-row justify-content-center px-0">
+            <div class="row col-9 d-flex flex-row px-0">
+                <div class="col-6 text-center align-self-center p-0">
+                    {%  if property.energy_performance is empty %}
+                        <h3>DPE - Pas d'information</h3>
+                    {% else %}
+                        <h3>DPE - {{ property.energy_performance }}</h3>
+                    {% endif %}
+                </div>
+                <div class="col-6 text-center align-self-center p-0">
+                    {%  if property.greenhouse_gases is empty %}
+                        <h3>GES - Pas d'information</h3>
+                    {% else %}
+                        <h3>GES - {{ property.greenhouse_gases }}</h3>
+                    {% endif %}
+                </div>
+                <div class="col-6 p-0">
+                    <img class="col-12 px-0" src="/assets/images/DPE.png" alt="dpe">
+                </div>
+                <div class="col-6 p-0">
+                    <img class="col-12 px-0"  src="/assets/images/GES.png" alt="ges">
+                </div>
+            </div>
+        </div>
+        <div class="row col-11 col-sm-12 d-flex justify-content-center mt-5 px-0">
+            <div class ="col-12 text-center px-0">
+                <h3>VOIR SUR LA CARTE</h3>
+            </div>
+            <div id="map" class="map"></div>
+               <script >
+                    var lat = {{ sector.lat }};
+                    var lon = {{ sector.lon }};
+                    var sectorName = "{{ sector.name }}";
+                    var map = L.map('map').setView([lat, lon], 15);
+
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                        minZoom: 1,
+                        maxZoom: 20
+                    }).addTo(map);
+
+                    L.marker([lat, lon]).addTo(map)
+                        .bindPopup(sectorName)
+                        .openPopup();
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

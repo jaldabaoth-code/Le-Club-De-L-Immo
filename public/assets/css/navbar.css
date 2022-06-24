@@ -1,0 +1,25 @@
+/* La navbar */
+.navbar {
+    background: var(--light);
+    height: var(--navbar-size);
+}
+
+.navbar-brand p {
+   font-family: var(--main-font);
+   margin-left:10px;
+}
+
+/* Le bouton active de navbar */
+.navbar-light .navbar-collapse .navbar-nav > .active {
+    color: var(--primary);
+}
+
+.nav-link:hover {
+    color: var(--primary)!important;
+    transition: 0.5s;
+}
+
+.navbar-nav a {
+    font-weight: 580;
+    font-style: 16px;
+}

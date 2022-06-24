@@ -1,0 +1,53 @@
+.btn_advert_contact {
+    color: var(--light);
+    background-color: var(--primary);
+    border-color: var(--primary);
+    width:fit-content;
+}
+
+.map {
+    height : 400px;
+}
+
+/* back to search page */
+.back {
+    text-decoration: none;
+}
+
+.back:hover {
+    text-decoration: underline;
+}
+
+/* Hide and show Detail */
+.checkbox {
+    display:none;
+}
+
+.show {
+    display: none;
+}
+
+.hide {
+    display: none;
+}
+
+@media screen and (max-width: 576px) {
+    /* Hide and Show Detail */
+    .detail {
+        height:2rem;
+        overflow:hidden;
+        background: linear-gradient(180deg,#ffffff 0,rgba(77, 77, 77, 0.9) 50%);
+    }
+
+    .checkbox:checked ~ .detail {
+        display: inline;
+    }
+
+    .checkbox:not(:checked) ~ .show {
+        display: block;
+    }
+
+    .checkbox:checked ~ .hide {
+        display: block;
+    }
+}

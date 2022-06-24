@@ -1,0 +1,25 @@
+<div class="col-12 pt-5 mx-2">
+    <div>
+        <div class=" d-none d-md-block">
+            <h3 class="fw-bold">{{ property.transaction }}</h3>
+            Réference : {{ property.reference }}
+        </div>
+        <h4 class="pt-3 pb-2 fw-bold d-none d-md-block pt-5">{{ property.price }}€ {{ property.transaction == 'A Louer' ? '/ mois' }}</h4>
+    </div>
+    <div class="row justify-content-center pt-5">
+        {% for propertyFeature in property.features %}
+            <div class="col-lg-4 col-md-6 col-4 text-center p-0 mt-2">
+                <div>
+                    <i class="{{ propertyFeature.flaticonName }}"></i>
+                </div>
+                <h6 class="small">
+                    {{ propertyFeature.number }} {{ propertyFeature.name }}
+                </h6>
+            </div>
+        {% endfor %}
+    </div>
+    <!-- Button trigger modal -->
+    <div class="row justify-content-center mt-0 mt-md-5">
+        <a href="/contact/index?id={{ property.id }}" class="btn-property btn text-light btn_advert_contact">Envoyez un Mail</a>
+    </div>
+</div>

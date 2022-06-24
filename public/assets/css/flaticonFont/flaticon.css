@@ -1,0 +1,68 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("./flaticon.ttf?65203055340b825b6dcd5d247b70c259") format("truetype"),
+url("./flaticon.woff?65203055340b825b6dcd5d247b70c259") format("woff"),
+url("./flaticon.woff2?65203055340b825b6dcd5d247b70c259") format("woff2"),
+url("./flaticon.eot?65203055340b825b6dcd5d247b70c259#iefix") format("embedded-opentype"),
+url("./flaticon.svg?65203055340b825b6dcd5d247b70c259#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-rooms:before {
+    content: "\f101";
+    font-size: 200%;
+}
+.flaticon-surface:before {
+    content: "\f102";
+    font-size: 200%;
+}
+.flaticon-building:before {
+    content: "\f103";
+    font-size: 200%;
+}
+.flaticon-appartement:before {
+    content: "\f104";
+    font-size: 200%;
+}
+.flaticon-home:before {
+    content: "\f105";
+    font-size: 200%;
+}
+.flaticon-bedrooms:before {
+    content: "\f106";
+    font-size: 200%;
+}
+.flaticon-bathrooms:before {
+    content: "\f107";
+    font-size: 200%;
+}
+.flaticon-toilets:before {
+    content: "\f108";
+    font-size: 200%;
+}
+.flaticon-home2:before {
+    content: "\f109";
+    font-size: 200%;
+}
+.flaticon-lift:before {
+    content: "\f10a";
+    font-size: 200%;
+}
+.flaticon-kitchen:before {
+    content: "\f10b";
+    font-size: 200%;
+}
+.flaticon-parking-space:before {
+    content: "\f10c";
+    font-size: 200%;
+}

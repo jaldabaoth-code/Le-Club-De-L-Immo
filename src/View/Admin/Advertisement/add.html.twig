@@ -1,0 +1,161 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/admin_advertisement.css">
+{% endblock %}
+
+{% block content %}
+    <main class="container adminAdvertisement">
+        <h2 class="pb-2 text-center">
+            Ajout d'une annonce
+        </h2>
+        <ul class="alert alert-danger list-unstyled empty">
+            {%- for error in errors -%}
+                <li>{{ error }}</li>
+            {%- endfor -%}
+        </ul>
+        <form method="POST" class="mb-5" enctype="multipart/form-data" novalidate>
+            <div class="mb-3">
+                <label for="transaction" class="form-label">Type de transaction</label>
+                <select class="form-control" id="transaction" name="transaction" required>
+                    {% for transactionType in transactionTypes %}
+                        <option
+                            {% if advertisement.transaction == transactionType %}
+                                selected
+                            {% endif %}
+                            value="{{ transactionType }}"
+                        >
+                            {{ transactionType }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="propertyType" class="form-label">Type de propriété</label>
+                <select class="form-control" id="propertyType" name="propertyType" required>
+                    {% for propertyType in propertyTypes %}
+                        <option
+                            {% if advertisement.propertyType == propertyType.id %}
+                                selected
+                            {% endif %}
+                            value="{{ propertyType.id }}"
+                        >
+                            {{ propertyType.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="surface" class="form-label">Surface en mètres carrés</label>
+                <input type="text" class="form-control" id="surface" 
+                    name="surface" placeholder="0" value="{{ advertisement.surface }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Prix</label>
+                <input type="text" class="form-control" id="price" 
+                    name="price" placeholder="0" value="{{ advertisement.price }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Adresse</label>
+                <input type="text" class="form-control" id="address" 
+                    name="address" placeholder="1 rue de Bellevue" value="{{ advertisement.address }}">
+            </div>
+            <div class="mb-3">
+                <label for="sector" class="form-label">Secteur</label>
+                <select class="form-control" id="sector" name="sector" required>
+                    {% for sector in sectors %}
+                        <option
+                            {% if advertisement.sector == sector.id %}
+                                selected
+                            {% endif %}
+                            value="{{ sector.id }}"
+                        >
+                            {{ sector.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="rooms" class="form-label">Nombre de pièces</label>
+                <input type="text" class="form-control" id="rooms" 
+                    name="rooms" placeholder="0" value="{{ advertisement.rooms }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="bedrooms" class="form-label">Nombre de chambres</label>
+                <input type="text" class="form-control" id="bedrooms" 
+                    name="bedrooms" placeholder="0" value="{{ advertisement.bedrooms }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="bathrooms" class="form-label">Nombre de salles de bain</label>
+                <input type="text" class="form-control" id="bathrooms" 
+                    name="bathrooms" placeholder="0" value="{{ advertisement.bathrooms }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="toilets" class="form-label">Nombre de toilettes</label>
+                <input type="text" class="form-control" id="toilets" 
+                    name="toilets" placeholder="0" value="{{ advertisement.toilets }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="parkingSpace" class="form-label">Nombre de places de stationnement</label>
+                <input type="text" class="form-control" id="parkingSpace" 
+                    name="parking-space" placeholder="0" value="{{ advertisement.parkingSpace }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="kitchen" class="form-label">Cuisine</label>
+                <input type="text" class="form-control" id="kitchen" 
+                    name="kitchen" placeholder="0" value="{{ advertisement.kitchen }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="lift" class="form-label">Ascenseur</label>
+                <input type="text" class="form-control" id="lift" 
+                    name="lift" placeholder="0" value="{{ advertisement.lift }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="energyPerformance" class="form-label">Performances énergétiques</label>
+                <select class="form-control" id="energyPerformance" name="energyPerformance" required>
+                    {% for grade in diagnosticGrades %}
+                        <option
+                            {% if advertisement.energyPerformance == grade %}
+                                selected
+                            {% endif %}
+                            value="{{ grade }}"
+                        >
+                            {{ grade }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="greenhouseGases" class="form-label">GES</label>
+                <select class="form-control" id="greenhouseGases" name="greenhouseGases" required>
+                    {% for grade in diagnosticGrades %}
+                        <option
+                            {% if advertisement.greenhouseGases == grade %}
+                                selected
+                            {% endif %}
+                            value="{{ grade }}"
+                        >
+                            {{ grade }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="photo" class="form-label">Photo</label>
+                <input type="file" class="form-control" id="photo" name="photo" aria-describedby="photoHelpBlock" required>
+                <small id="photoHelpBlock" class="form-text text-muted">
+                    Fichier de type .jpeg, .jpg, .png inférieur à 1Mo.
+                </small>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" name="description" id="description"
+                    cols="30" rows="10" placeholder="Présentation du bien">
+                    {{- advertisement.description -}}
+                </textarea>
+            </div>
+            <button class="btn btn-purple">Ajouter</button>
+            <a class="mx-2 btn btn-lightpurple" href="/admin">Retour</a>
+        </form>
+    </main>
+{% endblock %}

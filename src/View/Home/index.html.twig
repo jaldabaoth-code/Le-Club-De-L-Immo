@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    {% block stylesheet %}
+        <link rel="stylesheet" href="/assets/css/agency.css">
+        <link rel="stylesheet" href="/assets/css/property.css">
+    {% endblock %}
+
+    {% block header %}
+        {% include 'Home/header.html.twig' %}
+    {% endblock %}
+
+    {% include 'Home/_carousel.html.twig' %}
+    {% include 'Home/infoAgence.html.twig' %}
+{% endblock %}

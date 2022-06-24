@@ -1,0 +1,42 @@
+.container-property {
+    --height-card: 300px;
+    margin: calc(var(--height-card)/6) auto;
+}
+
+.container-searchBar {
+    height: calc(var(--height-card)/3);
+    background-color: var(--intermediary);
+}
+
+.property-card {
+    min-height: var(--height-card);
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+}
+
+.card-body {
+    margin: 0 auto!important;
+}
+
+.property-card img {
+    min-height: var(--height-card);
+    object-fit: cover;
+}
+
+.property-card .badge {
+    height: calc(var(--height-card)/9);
+    background-color: var(--secondary);
+}
+
+.btn-search {
+    margin-top: 43px;
+}
+
+.btn-search button {
+    margin-left:15px;
+}
+
+.error {
+    background-color: var(--secondary);
+    color:red;
+}

@@ -1,0 +1,126 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/contact.css">
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="container-contact col-lg-9">
+            <h2 class="title-contactform container text-center col-lg-9 col-md-9 col-12 mb-5 shadow-sm p-3 rounded-3">
+                CONTACTEZ-NOUS
+            </h2>
+            {#  Show the errors #}
+            {% if errors is not empty %}             
+                <ul class ="error alert text-danger container text-center mb-5 col-lg-9 col-md-9 col-12">
+                    {% for error in errors %} 
+                        <li class="list-unstyled"> {{ error }} </li>
+                    {% endfor %}
+                </ul>
+            {% endif %} 
+            {#  Showing the errors ends here  #}
+            <div class="container col-lg-5 col-md-9 col-12">
+                <form method ="post" action ="" novalidate>
+                    <div class="form-group row mb-3">
+                        <label class="col-lg-4 col-md-4 col-12 col-form-label" for="firstname">Prénom</label>
+                        <div class="col-lg-8 col-md-8 col-12">
+                            <input class="form-control" type="text" id="firstname" name="firstname" placeholder="Votre prénom" value="{{ client.firstname }}" required />
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-lg-4 col-md-4 col-12 col-form-label" for="lastname">Nom</label>
+                        <div class="col-lg-8 col-md-8 col-12">
+                            <input class="form-control" type="text" id="lastname" name="lastname" placeholder="Votre nom" value="{{ client.lastname }}" required/>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-lg-4 col-md-4 col-12 col-form-label" for="phone">Numéro de téléphone</label>
+                        <div class="col-lg-8 col-md-8 col-12">
+                            <input class="form-control" type="text" id="phone" name="phone" placeholder="00 11 22 33 44" value="{{ client.phone }}" required />
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label for="email" class="col-lg-4 col-md-4 col-12 col-form-label">Email</label>
+                        <div class="col-lg-8 col-md-8 col-12">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ client.email }}" required />
+                        </div>
+                    </div>
+                    {% if idProperty is null %}
+                        <div class="form-group row text-center mb-2 p-3">
+                            <p class="text-collapse">Vous êtes propriétaire et vous voulez déposer un dossier ?</p>
+                            <a href="#form-hidden" onclick="collapseForm()" class="btn-group-sm btn-default text-collapse" data-bs-toggle="collapse" data-bs-target="#form-hidden" aria-expanded="false" aria-controls="#form-hidden"><p class="font-weight-normal font-italic">Cliquez ici</p></a>                    
+                        </div>
+                        <!--This section is only showed when clicking on "cliquez ici"-->
+                        <div id="form-hidden" class="collapse">
+                            <div class="form-group row mb-3">
+                                <label class="col-lg-4 col-md-4 col-12 col-form-label" for="propertyType">Type de bien</label>
+                                <div class="col-lg-8 col-md-8 col-12">
+                                    <select name="propertyType" id="propertyType" class="form-control custom-select" size="1">
+                                        <option value="">Choisissez un type de bien</option>
+                                        {% for propertyType in propertyTypes %}
+                                            <option {% if client.propertyType == propertyType %} selected 
+                                                    {% endif %}
+                                            value="{{ propertyType }}">
+                                                {{ propertyType }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>               
+                            <div class="form-group row mb-3">
+                                <label class="col-lg-4 col-md-4 col-12 col-form-label" for="address">Adresse</label>
+                                <div class="col-lg-8 col-md-8 col-12">
+                                    <input class="form-control" type="text" id="address" name="address" placeholder="Votre adresse" value="{{ client.address }}" required />
+                                </div>
+                            </div>
+                            <div class="form-group row mb-3">
+                                <label class="col-lg-4 col-md-4 col-12 col-form-label" for="city">Ville</label>
+                                <div class="col-lg-8 col-md-8 col-12">
+                                    <input class="form-control" type="text" id="city" name="city" placeholder="Votre ville" value="{{ client.city }}" required />
+                                </div>
+                            </div>
+                            <div class="form-group row mb-3">
+                                <label class="col-lg-4 col-md-4 col-12 col-form-label" for="postalcode">Code postal</label>
+                                <div class="col-lg-8 col-md-8 col-12">
+                                    <input class="form-control" type="text" id="postalcode" name="postalcode" placeholder="Code postal" value="{{ client.postalcode }}" required />
+                                </div>
+                            </div>
+                        </div>
+                        <!--The hidden section by default ends here-->
+                    {% endif %}
+                    <div class="form-group row mb-3">
+                        <label class="col-lg-4 col-md-4 col-12 col-form-label" for="topic">Sujet</label>
+                        <div class="col-lg-8 col-md-8 col-12">
+                            <select name="topic" id="topic" class="form-control custom-select" size="1">
+                                {% if idProperty is not null %}
+                                    <option value="{{ topics[0] }}">{{ topics[0] }}</option>
+                                    <option value="{{ topics[1] }}">{{ topics[1] }}</option>
+                                {% else %}
+                                    <option>Choisissez un sujet</option>
+                                    {% for topic in topics %}
+                                        <option {% if client.topic == topic %} selected
+                                        {% endif %}
+                                            value="{{ topic }}">{{ topic }}
+                                        </option>
+                                    {% endfor %}
+                                {% endif %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-lg-4 col-md-4 col-12 col-form-label" for="message">Message</label>
+                        <div class="col-lg-8 col-md-8 col-12">
+                            <textarea class="form-control" id="message" rows="5" name="message" placeholder="Écrivez votre message" required>{{ client.message }}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-lg-4 col-md-4 col-12 col-form-label"></label>
+                        <div class="col-lg-8 col-md-8 col-12 text-center">
+                            <button type="submit" class="btn-contactForm btn text-light col-lg-4 col-md-4 col-4">Envoyer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

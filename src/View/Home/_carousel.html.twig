@@ -1,0 +1,56 @@
+<section>
+    <h2 class="font-weight-bold text-center mt-3 py-3">Nos biens</h2>
+    <div class="container">
+        <div class="row mx-lg-n5">
+            {% for sliderCount in 0..2 %}
+                {% if sliderCount > 0 %}
+                    <div class="col-lg-4 p-3 card d-none d-md-block">
+                {% else %}
+                    <div class="col-lg-4 p-3 card d-md-block py-3">
+                {% endif %}
+                    <div id="carouselExampleControls{{ sliderCount }}" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            {% block carouselImages1 %}
+                                {% for photo in photos[sliderCount] %}
+                                    <div class="carousel-item {{ loop.first ? 'active' : '' }}">
+                                        <img src="/uploads/{{ photo.name }}" class="d-block w-100" alt="First slide">
+                                    </div>
+                                {% else %}
+                                    <img src="/assets/images/no_image.png" class="d-block w-100" alt="No image">
+                                {% endfor %}
+                            {% endblock %}
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls{{ sliderCount }}" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">PRECEDENT</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls{{ sliderCount }}" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">SUIVANT</span>
+                        </button>
+                    </div>
+                    <div class="card-body col-12">
+                        <div class="row mt-xs-5 mt-md-3">
+                            <div class="col-6 text-start">
+                                <h6 class="card-title text-dark">{{ properties[sliderCount].property_type }}</br></h6>
+                            </div>
+                            <div class="col-6 ">
+                                <h5 class="col-12 text-purple text-end">
+                                    <strong><i>{{ properties[sliderCount].price |number_format(2, '.', ' ') }} € </i></strong>
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="row mt-md-3 mt-xs-0">
+                            <h5 class="card-text text-start">{{ properties[sliderCount].city }}</h5>
+                        </div>
+                        <div class="row mt-xs-0">
+                            <a href="/property/show?id={{ properties[sliderCount].id }}"
+                                class="btn bg-purple text-light col-6 offset-3 mt-3 border-2 rounded">Voir l'annonce</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>   
+</section>

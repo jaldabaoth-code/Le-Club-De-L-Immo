@@ -1,0 +1,17 @@
+<?php
+
+/*
+ * This file define Mail infos, for be able to send mail (example Gmail)
+ * 
+ * 
+ * if you have this error you need disable your antivirus
+ * 
+ * Connection could not be established with host "ssl://smtp.gmail.com:465":
+ * stream_socket_client(): SSL operation failed with code 1. OpenSSL Error messages:
+ * error:1416F086:SSLroutines:tls_process_server_certificate:certificate verify failed
+*/
+
+define('MAIL_LOGIN', 'exemple@gmail.com');
+define('MAIL_PASS', 'password');
+define('MAIL_FROM', 'exempleFrom@gmail.com');
+define('MAIL_TO', 'exempleTo@gmail.com');

@@ -1,0 +1,140 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/property.css">
+{% endblock %}
+
+{% block content %}
+    {# Search bar #}
+    <div class="container-fluid container-searchBar my-5">
+        <div class="container col-lg-9 col-12 pt-5 text-purple px-xs-2 col-xs-12">
+            {# Show the errors #}
+            {% if errors is not empty %}
+                <ul class="error alert text-danger container text-center col-12 pt-3 pb-0">
+                    {% for error in errors %}
+                        <li class="list-unstyled"> {{ error }} </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {# Showing the errors ends here #}
+            <form action="/property/index/" method="GET">
+                <fieldset class="container">
+                    <div class="input-group mb-5">
+                        <div class="col-lg-5 col-12 px-0">
+                            <div class="row">
+                                <label class="col-form-label col-6" for="transaction">Type de transaction</label>
+                                <label class="col-form-label col-6" for="propertyType">Type de bien</label>
+                                <!-- Search by transaction -->
+                                <div class="col-6 px-0">
+                                    <select id="transaction" name="transaction"
+                                        class="form-control fs-6 py-2 px-lg-0 mr-2 text-purple border border-4 rounded">
+                                        <option value="">Choisissez</option>
+                                        {% for transaction in transactions %}
+                                            <option {% if searchType.transaction==transaction %} selected {% endif %}
+                                                value="{{ transaction }}">
+                                                {{ transaction }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <!-- Search by property types -->
+                                <div class="col-6 px-0">
+                                    <select id="propertyType" name="propertyType"
+                                        class="form-control custom-select fs-6 py-2 text-purple border border-4 rounded">
+                                        <option value="">Choisissez</option>
+                                        {% for propertyType in propertyTypes %}
+                                            <option {% if searchType.propertyType==propertyType.id %} selected {% endif %}
+                                                value="{{ propertyType.id }}">
+                                                {{ propertyType.name }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-12 px-0">
+                            <div class="row">
+                                <label class="col-form-label col-6" for="sector">Secteur</label>
+                                <label class="col-form-label col-6" for="budget">Votre budget</label>
+                                <!-- Search by sector -->
+                                <div class="col-6 px-0 border-1 ">
+                                    <select id="sector" name="sector"
+                                        class="form-control custom-select fs-6 py-2 text-purple border border-4 rounded">
+                                        <option value="">Choisissez</option>
+                                        {% for sector in sectors %}
+                                            <option {% if searchType.sector==sector.id %} selected {% endif %}
+                                                value="{{ sector.id }}">
+                                                {{ sector.name }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <!-- Search by price -->
+                                <div class="col-6 px-0">
+                                    <input id="budget" name="budget"
+                                        class="form-control text-purple fs-6 py-2 border border-4 rounded"
+                                        placeholder="200000" value="{{ searchType.budget }}" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Button submit -->
+                        <div class="col-lg-2 col-12 text-center btn-search">
+                            <button class="col-12 btn bg-purple text-light rounded py-2 px-2 border-2 ml-xs-0 rounded"
+                                type="submit">Recherche</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    {# Showing list of properties ...#}
+    <div class="container-property container col-lg-9 col-md-9 col-12 mb-3">
+        <div class="row">
+            {% if properties is empty %}
+                <h5 class="empty-page text-purple container text-center alert mb-5 col-lg-9 col-md-9 col-12"><strong><i>
+                Aucun bien trouvé pour le moment. Nous vous invitons à explorer notre catalogue avec d'autres critères. </i></strong></h5>
+            {% else %}
+                {% for property in properties %}
+                    <div class="col-md-6 col-12">
+                        <div class="property-card card mb-5">
+                            <div class="row g-0">
+                                <div class="col-lg-6 col-sm-12 col-12">
+                                    <img class="w-100" src="/uploads/{{ property.property_photo }}" alt="{{ property.property_type }}" />
+                                </div>
+                                <div class="col-lg-6 col-sm-12 col-12 d-flex align-items-center">
+                                    <div class="card-body col-12">
+                                        <div class="row mb-4">
+                                            <span class="col-4 offset-8 badge pt-2 text-center text-purple">{{property.transaction}}</span>
+                                        </div>
+                                        <div class="row mt-xs-5 mt-md-0">
+                                            <div class="col-6">
+                                                <h6 class="card-title text-dark">
+                                                    {{ property.property_type }} </br>
+                                                    <strong class="text-purple"> {{ property.rooms }} pièces {{ property.surface }}
+                                                        m2 </strong>
+                                                </h6>
+                                            </div>
+                                            <div class="col-6">
+                                                <h5 class="col-12 text-purple">
+                                                    <strong class="float-end"><i>{{ property.price|number_format(0, '.', ' ') }} €</i></strong>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-md-3 mt-xs-0">
+                                            <h5 class="card-text">{{ property.sector_name }}</h5>
+                                        </div>
+                                        <div class="row mt-md-4 mt-xs-0">
+                                            <a href="/property/show?id={{ property.id }}"
+                                                class="btn bg-purple text-light col-6 offset-3 mt-3 border-2 rounded">Voir
+                                                l'annonce</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

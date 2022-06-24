@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto+Slab&display=swap');
+
+:root {
+    --primary: #6B36AE;
+    --secondary: #44414171;
+    --light: white;
+    --dark: black;
+    --transparent-light: rgba(255, 255, 255, 0.514);
+    --intermediary: #cdb1f1;
+    --card-color: #DDDDDD30;
+    /* Change the font- family and font size*/
+    --main-font:'Raleway',sans-serif;
+    --title-font:'Roboto Slab',serif;
+    --title-size: 64px;
+    --subtitle-size: 42px;
+    --larger-text-size: 24px;
+    --text-size: 18px;
+    --navbar-size: 82px;
+}
+
+body {
+    color: var(--dark);
+    font-size: var(--text-size);
+    font-family: var(--main-font);
+}
+
+h1 {
+    color: var(--primary);
+    font-family: var(--title-font);
+    font-size: var(--title-size);
+    font-weight: 900;
+/* Add new property to make the title more visible  */
+    text-shadow: 5px 5px 10px var(--light), 5px 5px 1em var(--light),
+    5px 5px 1em var(--light);    
+
+}
+
+h2 {
+    color: var(--primary);
+    font-family: var(--title-font);
+    font-size: var(--subtitle-size);
+}
+
+h3 {
+    color: var(--primary);
+    font-family: var(--main-font);
+}
+
+h4, h5, h6 {
+    color: var(--primary);
+}
+
+@media only screen and (max-width: 768px) {
+    h1 {
+        font-size: 52px;
+    }
+
+    h2 {
+        font-size: 34px;
+    }
+}
+
+.footer {
+    background-color: var(--primary);
+}
+
+/* Add new classes that are used in different pages  */
+.text-purple {
+    color:var(--primary);
+}
+
+.bg-purple {
+    background-color: var(--primary);
+}
+
+/* Carousel 3 biens mis en avant*/
+.badge {
+    height: calc(var(--height-card)/9);
+    background-color: var(--secondary);
+}
+
+.card {
+    min-height: var(--height-card);
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+}
