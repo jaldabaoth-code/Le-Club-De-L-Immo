@@ -1,4 +1,4 @@
-<h1>Le Club De L'Immo (Project 2, WCS)</h1>
+<h1>Le Club De L'Immo (Project 2, WCS Web PHP)</h1>
 
 ### Redo an existing site web of "Le Club De L'Immo" by modernizing it on PHP
 
@@ -101,7 +101,7 @@ docker run -i -t --name simple-mvc  -p 80:80 simple-mvc-container
 
 ## The Links
 
-<a href="https://github.com/WildCodeSchool/orleans-php-202103-project-clubimmo/tree/master">Link to the repository of project where we worked during the <b>WCS Project 2</b></a>
+<a href="https://github.com/WildCodeSchool/orleans-php-202103-project-clubimmo/tree/master">Link to the repository of project where we worked during <b>WCS Web Project 2</b></a>
 
 <a href="https://github.com/WildCodeSchool/simple-mvc">Link to the repository of <b>Simple-MVC</b></a>
 
