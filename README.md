@@ -35,7 +35,7 @@ For this one, just a simple example where users can choose one of their database
     define('MAIL_FROM', 'exempleFrom@gmail.com');
     define('MAIL_TO', 'exempleTo@gmail.com');
     ```
-0. Import the last version of the <b>*dataVx.sql*</b> file into your database, you can do it manually or use the *migration.php* script which will import a <b>*dataVx.sql*</b> file.
+0. Import the last version of the <b>*dataVx.sql*</b> file in your SQL server, you can do it manually or use the *migration.php* script which will import a <b>*dataVx.sql*</b> file.
 0. Run the internal PHP webserver with `php -S localhost:8000 -t public/`. The option `-t` with `public` as parameter means your localhost will target the `/public` folder.
 0. Go to `localhost:8000` with your favorite browser.
 0. For admin go to `localhost:8000/admin` with your favorite browser.
