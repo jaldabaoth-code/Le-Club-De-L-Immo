@@ -1,6 +1,6 @@
 <h1>Le Club De L'Immo (Project 2, WCS Web PHP)</h1>
 
-### Redo an existing site web of "Le Club De L'Immo" by modernizing it on PHP
+### Redo an existing site web of "Le Club De L'Immo" by modernizing it by using PHP
 
 
 ---
