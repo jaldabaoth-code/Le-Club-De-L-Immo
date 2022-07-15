@@ -64,7 +64,6 @@ You can find all these routes declared in the file `src/routes.php`. This is the
 
 ![simple_MVC.png](.tours/simple_MVC.png)
 
-
 ### Ask for a tour !
 
 <img src="https://raw.githubusercontent.com/WildCodeSchool/simple-mvc/codetour/.tours/photo-1632178151697-fd971baa906f.jpg" alt="Guided tour" width="150"/>
@@ -76,8 +75,6 @@ To take it, you need to install the `Code Tour` extension for Visual Studio Code
 It will give access to a new menu on your IDE where you'll find the different tours about the simple-MVC. Click on play to start one : 
 
 ![menu](https://raw.githubusercontent.com/WildCodeSchool/simple-mvc/codetour/.tours/code_tour_menu.png)
-
-
 
 ### Run it on docker
 
