@@ -18,7 +18,6 @@ class ContactController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-
     public const TOPICS = [
         "Je cherche un bien à acheter",
         "Je cherche un bien à louer",

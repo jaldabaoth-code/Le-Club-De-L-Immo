@@ -16,7 +16,8 @@ For this one, just a simple example where users can choose one of their database
 
 ### Steps
 
-0. Clone the repo from Github.
+0. Clone the repo from GitHub : `git clone git@github.com:jaldabaoth-code/Le-Club-De-L-Immo.git`
+0. Enter the directory : `cd Le-Club-De-L-immo`
 0. Run `composer install`
 0. Create a database (e.g. named `le_club_de_l_immo`) : `create database database_name;`
 0. Create <b>*config/db.php*</b> from <b>*config/db.php.dist*</b> file and add your DB parameters<br/>

@@ -30,7 +30,6 @@ class PropertyController extends AbstractController
         if (!empty($searchType)) {
             $errors = $this->validateSearchTypes($searchType, $propertyTypes, $sectors);
         }
-
         if (!empty($searchType) && empty($errors)) {
             // Convert the variables into integer data type
             $propertyTypeId = intval($searchType['propertyType']);
